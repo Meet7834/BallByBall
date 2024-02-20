@@ -3,6 +3,10 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 
+const userRoutes = require('./Routes/userRoutes');
+const teamRoutes = require('./Routes/teamRoutes');
+const matchRoutes = require('./Routes/matchRoutes');
+
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -15,7 +19,11 @@ mongoose.connect(MONGO_URL)
 app.use(express.json());
 app.use(morgan('tiny'));
 
-app.get('/', (req,res)=>{
+app.use('/', userRoutes);
+app.use('/', teamRoutes);
+app.use('/', matchRoutes);
+
+app.get('/', (req,res) => {
     res.send("Hello");
 })
 
