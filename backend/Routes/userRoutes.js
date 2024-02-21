@@ -25,16 +25,47 @@ router.get('/users', async (req, res) => {
     }
 });
 
-// Route to get a specific user by ID
-router.get('/users/:id', async (req, res) => {
+// Route to get a specific user by name
+router.get('/users/:name', async (req, res) => {
     try {
-        const user = await User.findById(req.params.id);
-        if (!user) {
+        const user = await User.findOne(req.params.name);
+        if(!user) {
             return res.status(404).json({ message: 'User not found' });
         }
         res.status(200).json(user);
     } catch (error) {
         res.status(500).json({ message: 'Failed to fetch user', error: error.message });
+    }
+});
+
+// Route to update a user's info
+router.put('/users/:id', async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const updatedUserData = req.body;
+
+        const updatedUser = await User.findByIdAndUpdate(userId, updatedUserData, { new: true });
+        if(!updatedUser) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        res.status(200).json({ message: 'User updated successfully', user: updatedUser });
+    } catch (error) {
+        res.status(500).json({ message: 'Failed to update user', error: error.message });
+    }
+});
+
+// Route to delete a user's info
+router.delete('/users/:id', async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const deletedUser = await User.findByIdAndDelete(userId);
+
+        if (!deletedUser) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        res.status(200).json({ message: 'User deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Failed to delete user', error: error.message });
     }
 });
 

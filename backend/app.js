@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const userRoutes = require('./Routes/userRoutes');
 const teamRoutes = require('./Routes/teamRoutes');
 const matchRoutes = require('./Routes/matchRoutes');
+const scorecardRoutes = require('./Routes/scorecardRoutes');
 
 dotenv.config();
 const app = express();
@@ -22,6 +23,7 @@ app.use(morgan('tiny'));
 app.use('/', userRoutes);
 app.use('/', teamRoutes);
 app.use('/', matchRoutes);
+app.use('/', scorecardRoutes);
 
 app.get('/', (req,res) => {
     res.send("Hello");
