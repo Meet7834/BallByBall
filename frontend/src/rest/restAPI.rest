@@ -1,0 +1,102 @@
+### Generate Sample Users Data ###
+
+DELETE http://localhost:8080/api/users/delete/all
+
+### POST /users
+POST http://localhost:8080/api/users/register
+Content-Type: application/json
+
+{
+  "name": "",
+  "email": "@gmail.com",
+  "phone": "6803846186",
+  "password": "qN9ZrVqz6Uhar"
+}
+
+### POST /users
+POST http://localhost:8080/api/users/register
+Content-Type: application/json
+
+{
+  "name": "",
+  "email": "@gmail.com",
+  "phone": "8108212958",
+  "password": "LxXm80oeLsB7B"
+}
+
+### POST /users
+POST http://localhost:8080/api/users/register
+Content-Type: application/json
+
+{
+  "name": "",
+  "email": "@gmail.com",
+  "phone": "8102725308",
+  "password": "TSNsnt"
+}
+
+### POST /users
+POST http://localhost:8080/api/users/register
+Content-Type: application/json
+
+{
+  "name": "",
+  "email": "@gmail.com",
+  "phone": "7127952477",
+  "password": "ijQcUN5PDZQAmt"
+}
+
+### POST /users
+POST http://localhost:8080/api/users/register
+Content-Type: application/json
+
+{
+  "name": "",
+  "email": "@gmail.com",
+  "phone": "8758694179",
+  "password": "j2g8L1u8MO6uku"
+}
+
+### POST /users
+POST http://localhost:8080/api/users/register
+Content-Type: application/json
+
+{
+  "name": "",
+  "email": "@gmail.com",
+  "phone": "7235782118",
+  "password": "aByAgnsc2gbP3RsNJfh"
+}
+
+### POST /users
+POST http://localhost:8080/api/users/register
+Content-Type: application/json
+
+{
+  "name": "",
+  "email": "@gmail.com",
+  "phone": "7100673926",
+  "password": "x2RedU8WgurwhapDjvo"
+}
+
+### POST /users
+POST http://localhost:8080/api/users/register
+Content-Type: application/json
+
+{
+  "name": "",
+  "email": "@gmail.com",
+  "phone": "9400146470",
+  "password": "NGHzY"
+}
+
+### POST /users
+POST http://localhost:8080/api/users/register
+Content-Type: application/json
+
+{
+  "name": "",
+  "email": "@gmail.com",
+  "phone": "9056876033",
+  "password": "iAmm8ir1ywBd4e7n"
+}
