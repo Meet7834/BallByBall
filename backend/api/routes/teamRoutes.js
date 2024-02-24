@@ -3,6 +3,7 @@ const router = express.Router();
 const TeamController = require('../controllers/teamController');
 
 // Get team by ID
+router.get('/', TeamController.getAllTeams);
 router.get('/:teamId', TeamController.getTeamById);
 
 // Create a new team

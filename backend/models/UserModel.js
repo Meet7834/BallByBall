@@ -1,14 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// const battingStatsSchema = new Schema({
-    
-// });
-
-// const bowlingStatsSchema = new Schema({
-
-// });
-
 const userSchema = new Schema({
     name: {
         type: String,
