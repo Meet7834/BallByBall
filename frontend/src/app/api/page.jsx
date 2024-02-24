@@ -1,7 +1,10 @@
-const API = () => {
-  return (
-    <h1>API</h1>
-  )
+
+const api = () => {
+    return (
+      <div>
+        API
+      </div>
+    )
 }
 
-export default API
+export default api
