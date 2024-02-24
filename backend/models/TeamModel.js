@@ -2,17 +2,23 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const teamSchema = new Schema({
+    name:{
+        type: 'string',
+        required: true,
+    },
     players: [{
         type: Schema.Types.ObjectId,
         ref: 'User'
     }],
     captain: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        required: true
     },
     wk: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        required: true
     },
     matchesPlayed: {
         type: Number,

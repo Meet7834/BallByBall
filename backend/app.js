@@ -21,9 +21,9 @@ app.use(express.json());
 app.use(morgan('tiny'));
 
 app.use('/api/users', userRoutes);
-app.use('/api/team', teamRoutes);
-app.use('/api/match', matchRoutes);
-app.use('/api/scorecard', scorecardRoutes);
+app.use('/api/teams', teamRoutes);
+app.use('/api/matches', matchRoutes);
+app.use('/api/scorecards', scorecardRoutes);
 
 app.get('/', (req,res) => {
     res.send("Hello");
