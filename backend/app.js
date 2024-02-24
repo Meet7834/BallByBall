@@ -20,7 +20,7 @@ mongoose.connect(MONGO_URL)
 app.use(express.json());
 app.use(morgan('tiny'));
 
-app.use('/api/user', userRoutes);
+app.use('/api/users', userRoutes);
 app.use('/api/team', teamRoutes);
 app.use('/api/match', matchRoutes);
 app.use('/api/scorecard', scorecardRoutes);

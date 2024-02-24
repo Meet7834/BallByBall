@@ -1,87 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const battingStatsSchema = new Schema({
-    inningsBatted: {
-        type:Number,
-        default: 0
-    },
-    notOut: {
-        type:Number,
-        default: 0
-    },
-    runs: {
-        type:Number,
-        default: 0
-    },
-    highestScore: {
-        type:Number,
-        default: 0
-    },
-    battingAvg: {
-        type:Number,
-        default: 0
-    },
-    ballsFaced: {
-        type:Number,
-        default: 0
-    },
-    halfCenturies: {
-        type:Number,
-        default: 0
-    },
-    centuries: {
-        type:Number,
-        default: 0
-    },
-});
+// const battingStatsSchema = new Schema({
+    
+// });
 
-const bowlingStatsSchema = new Schema({
-    innings: {
-        type:Number,
-        default: 0,
-    },
-    overs: {
-        type:Number,
-        default: 0,
-    },
-    balls: {
-        type:Number,
-        default: 0,
-    },
-    maidens: {
-        type:Number,
-        default: 0,
-    },
-    runsConceded: {
-        type:Number,
-        default: 0,
-    },
-    wickets: {
-        type:Number,
-        default: 0,
-    },
-    bestBowling: {
-        type: String,
-        default: 'NA'
-    },
-    bowlingSR: {
-        type:Number,
-        default: 0,
-    },
-    bowlingAvg: {
-        type:Number,
-        default: 0,
-    },
-    fiveWicketsHaul: {
-        type:Number,
-        default: 0,
-    },
-    bowlingEcon: {
-        type:Number,
-        default: 0,
-    },
-});
+// const bowlingStatsSchema = new Schema({
+
+// });
 
 const userSchema = new Schema({
     name: {
@@ -93,7 +19,7 @@ const userSchema = new Schema({
         required: true,
         unique: true
     },
-    email:{
+    email: {
         type: String,
         unqiue: true,
     },
@@ -126,7 +52,8 @@ const userSchema = new Schema({
         default: 'Right-arm fast',
     },
     dateOfBirth: {
-        type: Date
+        type: Date,
+        default: Date.parse('2000-01-01'),
     },
     stats: {
         matches: {
@@ -141,8 +68,86 @@ const userSchema = new Schema({
             type: Number,
             default: 0,
         },
-        battingStats: battingStatsSchema,
-        bowlingStats: bowlingStatsSchema,
+        battingStats: {
+            inningsBatted: {
+                type: Number,
+                default: 0
+            },
+            notOut: {
+                type: Number,
+                default: 0
+            },
+            runs: {
+                type: Number,
+                default: 0
+            },
+            highestScore: {
+                type: Number,
+                default: 0
+            },
+            battingAvg: {
+                type: Number,
+                default: 0
+            },
+            ballsFaced: {
+                type: Number,
+                default: 0
+            },
+            halfCenturies: {
+                type: Number,
+                default: 0
+            },
+            centuries: {
+                type: Number,
+                default: 0
+            }
+        },
+        bowlingStats: {
+            innings: {
+                type: Number,
+                default: 0,
+            },
+            overs: {
+                type: Number,
+                default: 0,
+            },
+            balls: {
+                type: Number,
+                default: 0,
+            },
+            maidens: {
+                type: Number,
+                default: 0,
+            },
+            runsConceded: {
+                type: Number,
+                default: 0,
+            },
+            wickets: {
+                type: Number,
+                default: 0,
+            },
+            bestBowling: {
+                type: String,
+                default: 'NA'
+            },
+            bowlingSR: {
+                type: Number,
+                default: 0,
+            },
+            bowlingAvg: {
+                type: Number,
+                default: 0,
+            },
+            fiveWicketsHaul: {
+                type: Number,
+                default: 0,
+            },
+            bowlingEcon: {
+                type: Number,
+                default: 0,
+            }
+        }
     },
     matches: [{
         type: Schema.Types.ObjectId,
