@@ -7,96 +7,19 @@ POST http://localhost:8080/api/users/register
 Content-Type: application/json
 
 {
-  "name": "",
-  "email": "@gmail.com",
+  "name": "Rajat Patidar",
+  "email": "patidar@gmail.com",
   "phone": "6803846186",
   "password": "qN9ZrVqz6Uhar"
 }
 
-### POST /users
-POST http://localhost:8080/api/users/register
+### POST /teams
+POST http://localhost:8080/api/teams
 Content-Type: application/json
 
 {
-  "name": "",
-  "email": "@gmail.com",
-  "phone": "8108212958",
-  "password": "LxXm80oeLsB7B"
-}
-
-### POST /users
-POST http://localhost:8080/api/users/register
-Content-Type: application/json
-
-{
-  "name": "",
-  "email": "@gmail.com",
-  "phone": "8102725308",
-  "password": "TSNsnt"
-}
-
-### POST /users
-POST http://localhost:8080/api/users/register
-Content-Type: application/json
-
-{
-  "name": "",
-  "email": "@gmail.com",
-  "phone": "7127952477",
-  "password": "ijQcUN5PDZQAmt"
-}
-
-### POST /users
-POST http://localhost:8080/api/users/register
-Content-Type: application/json
-
-{
-  "name": "",
-  "email": "@gmail.com",
-  "phone": "8758694179",
-  "password": "j2g8L1u8MO6uku"
-}
-
-### POST /users
-POST http://localhost:8080/api/users/register
-Content-Type: application/json
-
-{
-  "name": "",
-  "email": "@gmail.com",
-  "phone": "7235782118",
-  "password": "aByAgnsc2gbP3RsNJfh"
-}
-
-### POST /users
-POST http://localhost:8080/api/users/register
-Content-Type: application/json
-
-{
-  "name": "",
-  "email": "@gmail.com",
-  "phone": "7100673926",
-  "password": "x2RedU8WgurwhapDjvo"
-}
-
-### POST /users
-POST http://localhost:8080/api/users/register
-Content-Type: application/json
-
-{
-  "name": "",
-  "email": "@gmail.com",
-  "phone": "9400146470",
-  "password": "NGHzY"
-}
-
-### POST /users
-POST http://localhost:8080/api/users/register
-Content-Type: application/json
-
-{
-  "name": "",
-  "email": "@gmail.com",
-  "phone": "9056876033",
-  "password": "iAmm8ir1ywBd4e7n"
+  "name": "RCB",
+  "players": ["65d98e63dd078ff50d2f46a4", "65d98ed2dd078ff50d2f46a6", "65d99083dd078ff50d2f46a8", "65d99085dd078ff50d2f46aa", "65d99087dd078ff50d2f46ac", "65d99088dd078ff50d2f46ae", "65d99090dd078ff50d2f46b4", "65d99093dd078ff50d2f46b6", "65d99094dd078ff50d2f46b8", "65d9908add078ff50d2f46b0", "65d9908edd078ff50d2f46b2"],
+  "capatain": "65d98e63dd078ff50d2f46a4",
+  "wk": "65d99088dd078ff50d2f46ae"
 }
