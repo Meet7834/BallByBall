@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
+const cors = require('cors');
 
 const userRoutes = require('./api/routes/userRoutes');
 const teamRoutes = require('./api/routes/teamRoutes');
@@ -19,6 +20,10 @@ mongoose.connect(MONGO_URL)
 
 app.use(express.json());
 app.use(morgan('tiny'));
+app.use(cors({
+    origin: "http://localhost:3000",
+    method: ["GET", "POST"]
+}));
 
 app.use('/api/users', userRoutes);
 app.use('/api/teams', teamRoutes);
