@@ -1,14 +1,8 @@
+import LoginForm from '@/components/LoginForm'
+import React from 'react'
 
-const Login = () => {
-  return (
-    <div>
-        <input type="email" name="email"/>
-        <br />
-        <input type="password" />
-        <br />
-        <button>LogIn</button>
-    </div>
-  )
+const login = () => {
+  return <LoginForm />
 }
 
-export default Login
+export default login
