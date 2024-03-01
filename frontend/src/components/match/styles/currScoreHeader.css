@@ -1,0 +1,21 @@
+/* Style for the overall header container */
+.scorecard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+/* Style for the team info section */
+.scorecard-header h3 {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Style for the overs and run rate section */
+.scorecard-header p {
+    margin-bottom: 2px;
+    /* Adjust spacing between lines */
+}

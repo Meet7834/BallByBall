@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const MatchController = require('../controllers/matchController');
 
+router.get('/', MatchController.getAllMatches);
 // Get match by ID
 router.get('/:matchId', MatchController.getMatchById);
 

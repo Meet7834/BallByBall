@@ -1,0 +1,33 @@
+/* General Styling */
+.create-match-form {
+    display: flex;
+    flex-direction: column;
+    /* Arrange elements vertically */
+    align-items: flex-start;
+    /* Align items to the start */
+    gap: 15px;
+    /* Spacing between elements */
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+.create-match-form label {
+    font-weight: bold;
+}
+
+.create-match-form select,
+.create-match-form input[type="number"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.create-match-form button[type="submit"] {
+    background-color: #007bff;
+    /* Example color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

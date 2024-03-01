@@ -1,0 +1,38 @@
+/* ... other styles from before */
+
+/* Styling for Delivery Options */
+.delivery-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 10px;
+}
+
+.delivery-options button {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    font-size: 16px;
+    /* Adjust as needed */
+}
+
+.delivery-options button:hover {
+    background-color: #ddd;
+}
+
+/* You can add more specific styling for each section if needed */
+.run-options button {
+    background-color: lightgreen;
+    /* Example color */
+}
+
+.extra-options button {
+    background-color: lightyellow;
+    /* Example color */
+}
+
+.dismissal-options button {
+    background-color: #f99;
+    /* Example color */
+}

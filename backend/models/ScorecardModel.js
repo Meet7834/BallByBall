@@ -107,22 +107,39 @@ const battingStatsSchema = new Schema({
 });
 
 const inningSchema = new Schema({
-    inningNum: Number,
-    runs: Number,
-    wickets: Number,
+    inningNum: {
+        type: Number,
+        default: 0,
+    },
+    runs: {
+        type: Number,
+        default: 0,
+    },
+    wickets: {
+        type: Number,
+        default: 0,
+    },
     extras: extrasSchema,
     currOver: {overSchema},
     overs:[overSchema],
+    currBatters: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }],
+    currBowler: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
     battingStats: [battingStatsSchema],
     bowlingStats: [bowlingStatsSchema],
 });
 
 const scorecardSchema = new Schema({
-    matchID: {
-        type: Schema.Types.ObjectId,
-        ref: 'Match'
-    },
     innings: [inningSchema],
+    currInnings: {
+        type: Number,
+        default: 1,
+    }
 });
 
 const Scorecard = mongoose.model('Scorecard', scorecardSchema);

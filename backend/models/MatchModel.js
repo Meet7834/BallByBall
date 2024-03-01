@@ -2,39 +2,48 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const extrasSchema = new Schema({
-    noBalls: Number,
-    legByes: Number,
-    byes: Number,
-    wides: Number
+    noBalls: {
+        type: Number,
+        default: 0,
+    },
+    legByes: {
+        type: Number,
+        default: 0,
+    },
+    byes: {
+        type: Number,
+        default: 0,
+    },
+    wides: {
+        type: Number,
+        default: 0,
+    }
 });
 
 const matchSchema = new Schema({
     isLive: {
         type: Boolean,
-        default: false
+        default: true
     },
-    venue: String,
-    teams: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Team'
-    }],
     hostId: {
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    matchDate: Date,
-    scoreCardID: {
+    scoreCard: {
         type: Schema.Types.ObjectId,
         ref: 'Scorecard'
     },
-    tossWinner: {
+    totalOvers: {
+        type: Number,
+        default: 1
+    },
+    battingTeam: {
         type: Schema.Types.ObjectId,
         ref: 'Team'
     },
-    tossDecision: String,
-    manOfTheMatch: {
+    bowlingTeam: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'Team'
     },
     extras: extrasSchema,
 });

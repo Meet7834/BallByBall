@@ -3,6 +3,9 @@ const router = express.Router();
 const ScorecardController = require('../controllers/scorecardController');
 
 // Get scorecard by ID
+router.get('/', ScorecardController.getAllScorecards);
+
+// Get scorecard by ID
 router.get('/:scorecardId', ScorecardController.getScorecardById);
 
 // Create a new scorecard

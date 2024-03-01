@@ -1,5 +1,16 @@
 const Scorecard = require('../../models/ScorecardModel');
 
+exports.getAllScorecards = async (req, res) => {
+    try {
+        const scorecard = await Scorecard.find({});
+        if (!scorecard) {
+            return res.status(404).json({ message: 'Scorecard not found' });
+        }
+        res.status(200).json(scorecard);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
 exports.getScorecardById = async (req, res) => {
     try {
         const scorecard = await Scorecard.findById(req.params.scorecardId);

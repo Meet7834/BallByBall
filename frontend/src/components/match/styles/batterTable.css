@@ -1,0 +1,17 @@
+/* ... other styles */
+
+.batter-stats-table {
+    margin-bottom: 30px;
+}
+
+.batter-stats-table table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.batter-stats-table th,
+.batter-stats-table td {
+    text-align: center;
+    padding: 8px;
+    border: 1px solid #ddd;
+}

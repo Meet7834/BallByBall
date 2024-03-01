@@ -1,0 +1,17 @@
+/* ... other styles */
+
+.bowler-stats-table {
+    margin-bottom: 30px;
+}
+
+.bowler-stats-table table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.bowler-stats-table th,
+.bowler-stats-table td {
+    text-align: center;
+    padding: 8px;
+    border: 1px solid #ddd;
+}
