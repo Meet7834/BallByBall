@@ -5,15 +5,14 @@ import CurrScoreHeader from '@/components/match/CurrScoreHeader';
 import DeliveryOptions from '@/components/match/DeliveryOptions';
 import BatterTable from '@/components/match/BatterTable';
 import BowlerTable from '@/components/match/BowlerTable';
-import dummyData from './dummyData';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname, useParams, useSearchParams } from 'next/navigation';
 
 const Match = () => {
 
-    const [match, setMatch] = useState();
-    const [team1, setTeam1] = useState([]);
-    const [team2, setTeam2] = useState([]);
-    const [currBattingTeam, setCurrBattingTeam] = useState(null);
+    const [match, setMatch] = useState({});
+    const [battingTeam, setBattingTeam] = useState(null);
+    const [bowlingTeam, setBowlingTeam] = useState(null);
+    const [scoreCard, setScoreCard] = useState(null);
     const [currScore, setCurrScore] = useState(0);
     const [wickets, setWickets] = useState(0);
     const [currOver, setCurrOver] = useState([]);
@@ -22,34 +21,64 @@ const Match = () => {
     const [currRunRate, setCurrRunRate] = useState(0);
     const [currBatters, setCurrBatters] = useState([]);
     const [currBowler, setCurrBowler] = useState(null);
-    
-    const router = useRouter();
+
+    const params = useParams();
+
+    const matchId = params.matchId;
+
     useEffect(() => {
-        const { matchId } = router.query;
-
-        const fetchMatchData = async () => {
-            try {
-                const response = await fetch(`http://localhost:8080/api/matches/${matchId}`); 
-                if (!response.ok) {
-                    throw new Error('Failed to fetch match data');
-                }
-                const matchData = await response.json();
-                setMatch(matchData);
-                setTeam1(match.battingFirst);
-                setTeam2(match.battingSecond);
-                setCurrBattingTeam(match.battingFirst);
-                setCurrScore(match.currentScore);
-                setCurrBatters(match.scoreCard.innings.currBatters);
-                setCurrBowler(match.scoreCard.innings.currBowler);
-                setWickets(match.scoreCard.wickets)
-                setTotalOvers(match.scoreCard.totalOvers);
-            } catch (error) {
-                console.error('Error fetching match data:', error);
-            }
-        };
-
         fetchMatchData();
     }, []);
+
+    useEffect(() => {
+        if (match.battingTeam) fetchBattingTeamData();
+    }, [match])
+
+    const fetchBattingTeamData = async () => {
+        const battingTeamRes = await fetch(`http://localhost:8080/api/teams/${match.battingTeam}`)
+        if (!battingTeamRes.ok) throw new Error('Failed to fetch batting team');
+        const batTeam = await battingTeamRes.json();
+        
+        const bowlingTeamRes = await fetch(`http://localhost:8080/api/teams/${match.bowlingTeam}`)
+        if (!bowlingTeamRes.ok) throw new Error('Failed to fetch bowling team');
+        const bowlTeam = await bowlingTeamRes.json();
+        
+        const scoreCardRes = await fetch(`http://localhost:8080/api/scorecard/${match.scoreCard}`)
+        if (!scoreCardRes.ok) throw new Error('Failed to fetch scorecard');
+        const scoreCard = await scoreCardRes.json();
+
+        if (scoreCard){
+            setScoreCard(scoreCard);
+            
+        }
+        if (battingTeam){
+            setBattingTeam(batTeam)
+        }
+        if (bowlingTeam){
+            setBowlingTeam(bowlTeam);
+        }
+    };
+    const fetchMatchData = async () => {
+        try {
+            const response = await fetch(`http://localhost:8080/api/matches/${matchId}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch match data');
+            }
+            const matchData = await response.json();
+
+            if (matchData) {
+                setMatch(matchData)
+                setCurrScore(matchData.currentScore);
+                setCurrBatters(matchData.scoreCard.innings.currBatters);
+                setCurrBowler(matchData.scoreCard.innings.currBowler);
+                setWickets(matchData.scoreCard.wickets)
+                setTotalOvers(matchData.scoreCard.totalOvers);    
+            }
+        } catch (error) {
+            console.error('Error fetching match data:', error);
+        }
+    };
+
 
     const handleDeliveryResult = (result) => {
 
@@ -58,20 +87,23 @@ const Match = () => {
     return (
         <>
             {/* <Navbar /> */}
-            <CurrScoreHeader
-                currentBattingTeam={dummyData.teams[0]}
-                currentScore={dummyData.match.currentScore}
-                wickets={dummyData.match.wickets}
-                currentOver={dummyData.match.currentOver}
-                totalOvers={dummyData.match.totalOvers}
-                currentRunRate={dummyData.match.currentRunRate} />
+            {match ?
+                (<>
+                    <CurrScoreHeader
+                        currentBattingTeam={battingTeam}
+                        currentScore={scoreCard.innings.runs}
+                        wickets={scoreCard.wickets}
+                        currentOver={currOver}
+                        totalOvers={totalOvers}
+                        currentRunRate={currRunRate} />
 
-            <DeliveryOptions onDeliveryResult={handleDeliveryResult} />
+                    <DeliveryOptions onDeliveryResult={handleDeliveryResult} />
 
-            <BatterTable currentBatters={dummyData.match.currentBatters} />
+                    <BatterTable currentBatters={currBatters} />
 
-            <BowlerTable currentBowler={dummyData.match.currentBowler} />
-
+                    <BowlerTable currentBowler={currBowler} />
+                </>)
+                : <div>Loading Match Data</div>}
         </>
     )
 }

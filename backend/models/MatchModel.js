@@ -29,7 +29,7 @@ const matchSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    scoreCard: {
+    scorecard: {
         type: Schema.Types.ObjectId,
         ref: 'Scorecard'
     },

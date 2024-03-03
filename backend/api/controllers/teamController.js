@@ -14,7 +14,7 @@ exports.getAllTeams = async (req, res) => {
 
 exports.getTeamById = async (req, res) => {
     try {
-        const team = await Team.findById(req.params.teamId).populate('players');
+        const team = await Team.findById(req.params.teamId);
         if (!team) {
             return res.status(404).json({ message: 'Team not found' });
         }

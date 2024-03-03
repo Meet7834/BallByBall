@@ -51,13 +51,13 @@ const CreateMatch = () => {
             }
 
             const scorecard = await scorecardRes.json();
-
+            
             const matchData = {
                 battingTeam,
                 bowlingTeam,
                 totalOvers,
                 hostId: battingTeam.players[0],
-                scorecard,
+                scorecard
             };
 
             try {
